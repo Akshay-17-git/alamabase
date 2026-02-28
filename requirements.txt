@@ -1,0 +1,23 @@
+# Streamlit web framework
+streamlit>=1.28.0
+
+# FAISS for vector similarity search
+faiss-cpu>=1.7.4
+
+# PDF text extraction
+pdfplumber>=0.10.0
+
+# DOCX file generation
+python-docx>=0.8.11
+
+# Environment variable management
+python-dotenv>=1.0.0
+
+# Numerical computing
+numpy>=1.24.0
+
+# Sentence transformers for free local embeddings
+sentence-transformers>=2.2.0
+
+# Requests for Ollama API
+requests>=2.31.0
