@@ -38,7 +38,7 @@ Download sample documents from the `sample_docs/` folder in the repository:
 - **Frontend:** Streamlit
 - **Database:** SQLite
 - **Vector Search:** FAISS (Facebook AI Similarity Search)
-- **LLM:** Groq (cloud) / Ollama (local)
+- **LLM:** Groq (cloud)
 - **Embeddings:** Sentence-Transformers
 
 ## 📦 Deployment
@@ -124,21 +124,7 @@ streamlit run app.py
 
 The app will open at http://localhost:8501
 
-### 3. How to Install Ollama & Download Model (Optional - Local LLM)
-
-For local LLM execution instead of Groq cloud:
-
-```bash
-# Install Ollama
-curl -fsSL https://ollama.com/install.sh | sh
-
-# Download a model (llama3.2 or mistral recommended)
-ollama pull llama3.2
-
-# The app will automatically use Ollama when no Groq API key is provided
-```
-
-### 4. How to Setup SQLite Database
+### 3. How to Setup SQLite Database
 
 The database is automatically created on first run. To reset:
 
@@ -152,7 +138,7 @@ rm database.db
 streamlit run app.py
 ```
 
-### 5. How to Upload Documents & Questionnaire
+### 4. How to Upload Documents & Questionnaire
 
 1. **Login** - Use demo credentials (demouser/demopass) or click "Demo Login"
 2. **Upload Reference Documents** - Go to "Upload Docs" tab and upload:
@@ -162,7 +148,7 @@ streamlit run app.py
 3. **Upload Questionnaire** - Go to "Upload Questionnaire" tab and upload your security questionnaire (PDF or TXT)
 4. **Generate Answers** - Click "Generate Answers" to auto-answer questions using RAG
 
-### 6. Expected Output
+### 5. Expected Output
 
 The system will generate:
 - **AI-generated answers** with relevant citations from your uploaded documents
@@ -178,7 +164,7 @@ Confidence: 85%
 Source: Security_Policy.pdf (Page 3)
 ```
 
-### 7. Known Limitations
+### 6. Known Limitations
 
 - **PDF parsing quality** - Complex PDFs with images/tables may not parse correctly
 - **Context window** - LLM has limited context; very long documents may be truncated
@@ -187,7 +173,7 @@ Source: Security_Policy.pdf (Page 3)
 - **Ollama speed** - Local LLM is slower than Groq cloud API
 - **No web scraping** - Must manually upload all reference documents
 
-### 8. Future Improvements
+### 7. Future Improvements
 
 - [ ] Add support for more file formats (Excel, CSV, HTML)
 - [ ] Implement web scraping for automatic reference document collection
