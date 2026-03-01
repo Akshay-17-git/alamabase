@@ -6,6 +6,14 @@ def login_page():
     st.title("🛡️ SentraShield QA Tool")
     st.markdown("AI-powered security questionnaire answering system")
     
+    # Demo login button
+    if st.button("🔓 Demo Login", use_container_width=True):
+        st.session_state["user_id"] = 1
+        st.session_state["email"] = "demo@test.com"
+        st.rerun()
+    
+    st.divider()
+    
     tab1, tab2 = st.tabs(["🔐 Login", "📝 Sign Up"])
 
     with tab1:

@@ -1,133 +1,90 @@
-# 🛡️ SentraShield QA Tool
+# SentraShield QA Tool
 
-An AI-powered security questionnaire answering tool built with Streamlit, Ollama (local LLM), and FAISS vector search. This application uses Retrieval-Augmented Generation (RAG) to automatically answer security questionnaires based on your reference documentation.
+An AI-powered questionnaire answering system that uses Retrieval-Augmented Generation (RAG) to automatically answer security questionnaires based on your reference documents.
 
-**100% Free** - Uses local models (no API costs!)
+## 🚀 Live Demo
 
-## Features
+[**https://alamabase-rcxtn2ssb4vuwqf2zbjpza.streamlit.app/**](https://alamabase-rcxtn2ssb4vuwqf2zbjpza.streamlit.app/)
 
-- **User Authentication**: Secure login/signup with SQLite database
-- **Multi-format Support**: Parse PDFs, TXT, and DOCX reference documents
-- **RAG-powered Answers**: Generate accurate answers using semantic search + local Ollama LLM
-- **User Isolation**: Each user has their own FAISS vector index (namespace support)
-- **Review & Edit**: Manually edit generated answers before export
-- **DOCX Export**: Export completed questionnaires to professional Word documents
-- **Confidence Scoring**: See confidence scores for each answer
+Click **"Demo Login"** button on the login page - no credentials needed!
 
-## Architecture
+## 📋 Sample Documents
+
+Download sample documents from the `sample_docs/` folder in the repository:
+- **Security_Questionnaire.pdf** - Sample questionnaire to test
+- **Authentication_Documentation.pdf** - Reference doc
+- **Compliance_Statement.pdf** - Reference doc
+- **Incident_Response_Plan.pdf** - Reference doc
+- **Infrastructure_Overview.pdf** - Reference doc
+- **Security_Policy.pdf** - Reference doc
+
+## 📋 Features
+
+| Feature | Description |
+|---------|-------------|
+| **User Authentication** | Secure login/signup with SQLite database |
+| **Multi-format Support** | Parse PDFs, TXT, and DOCX documents |
+| **RAG-powered Answers** | Generate accurate answers with citations from reference docs |
+| **Confidence Scoring** | View confidence scores for each answer |
+| **Review & Edit** | Manually edit AI-generated answers before export |
+| **DOCX Export** | Export completed questionnaires to Word documents |
+
+## 🛠️ Tech Stack
+
+- **Frontend:** Streamlit
+- **Database:** SQLite
+- **Vector Search:** FAISS (Facebook AI Similarity Search)
+- **LLM:** Groq (cloud) / Ollama (local)
+- **Embeddings:** Sentence-Transformers
+
+## 📦 Deployment
+
+### Streamlit Cloud (Recommended)
+
+1. Deploy to [Streamlit Cloud](https://share.streamlit.io)
+2. Add your Groq API key in **App Settings → Secrets**:
+
+```toml
+GROQ_API_KEY = "your_groq_api_key"
+```
+
+Get free API key: https://console.groq.com/keys
+
+### Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com/Akshay-17-git/alamabase.git
+cd alamabase
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the app
+streamlit run app.py
+```
+
+## 📁 Project Structure
 
 ```
-sentrashield-qa-tool/
-├── app.py              # Main Streamlit application
-├── auth.py             # Login/signup logic
-├── db.py               # SQLite database setup + queries
-├── parser.py           # Questionnaire + PDF parsing
-├── embedder.py         # Chunking + FAISS vector indexing
-├── rag.py              # Retrieval + answer generation
-├── exporter.py         # DOCX export functionality
-├── requirements.txt    # Python dependencies
-├── .env                # Environment variables
-└── .streamlit/         # Streamlit configuration
+├── app.py          # Main Streamlit application
+├── auth.py         # Authentication module
+├── db.py           # SQLite database operations
+├── parser.py       # Document parsing (PDF, TXT, DOCX)
+├── embedder.py     # FAISS vector indexing
+├── rag.py          # RAG answer generation
+├── exporter.py     # DOCX export functionality
+└── requirements.txt
 ```
 
-### Technology Stack
+## 🔑 Demo Account
 
-- **Frontend**: Streamlit
-- **Database**: SQLite
-- **Vector Search**: FAISS (Facebook AI Similarity Search)
-- **LLM**: Ollama (local, free)
-- **Embeddings**: Sentence-Transformers (local, free)
-- **PDF Parsing**: pdfplumber
+The live demo has a built-in demo account. Simply click the **Demo Login** button on the login page to explore the app without registration.
 
-## Prerequisites
-
-1. **Install Ollama** (for local LLM):
-   ```bash
-   # macOS/Linux
-   brew install ollama
-   
-   # Windows: Download from https://ollama.ai
-   ```
-
-2. **Download an LLM model**:
-   ```bash
-   ollama pull llama3    # Recommended (requires ~4GB)
-   # Or: ollama pull mistral
-   # Or: ollama pull phi
-   ```
-
-3. **Start Ollama server**:
-   ```bash
-   ollama serve
-   ```
-
-## Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone <your-repo-url>
-   cd sentrashield-qa-tool
-   ```
-
-2. **Create virtual environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run the application**
-   ```bash
-   streamlit run app.py
-   ```
-
-## How to Use
-
-### Step 1: Sign Up / Log In
-- Create an account with your email and password
-- Each user has isolated access to their own data and knowledge base
-
-### Step 2: Build Knowledge Base
-- Upload reference documents (PDF, TXT, or DOCX)
-- Click "Build Knowledge Base" to process and index documents
-- The system uses sentence-transformers to create embeddings
-
-### Step 3: Upload Questionnaire
-- Upload a security questionnaire in PDF format
-- Click "Generate Answers" to start AI processing
-
-### Step 4: Review & Edit
-- Navigate to the Review tab
-- Click on each question to view and edit the answer
-- Save your changes
-
-### Step 5: Export
-- Navigate to the Export tab
-- Download as DOCX or CSV format
-
-## Important Notes
-
-### Ollama Not Running?
-If you see "Ollama is not running", make sure:
-1. Ollama is installed: `brew install ollama` (macOS) or download from ollama.ai (Windows)
-2. Ollama server is running: `ollama serve`
-3. Model is downloaded: `ollama pull llama3`
-
-### First Run
-On first run, sentence-transformers will download the embedding model (~90MB). This is a one-time download.
-
-## What I'd Improve With More Time
-
-1. **Better LLM**: Use a larger model like llama3:70b for better quality
-2. **Multi-model Support**: Allow users to choose between different Ollama models
-3. **Batch Processing**: Add async processing for multiple questionnaires
-4. **Admin Dashboard**: View all users and manage questionnaires
-5. **Version History**: Track changes to answers over time
-
-## License
+## 📄 License
 
 MIT License
+
+---
+
+Built by **Akshay** 🚀

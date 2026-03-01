@@ -8,7 +8,7 @@ OLLAMA_MODEL = "llama3"
 
 # Configuration for Groq (cloud - free tier available)
 # Get free API key at: https://console.groq.com/keys
-GROQ_API_KEY = os.getenv("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", "")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 GROQ_MODEL = "llama-3.1-8b-instant"  # Free model on Groq
 
 # System prompt for the RAG assistant

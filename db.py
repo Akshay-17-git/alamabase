@@ -38,6 +38,15 @@ def init_db():
             FOREIGN KEY (questionnaire_id) REFERENCES questionnaires(id)
         );
     """)
+    
+    # Create demo user if not exists
+    demo_email = "demo@test.com"
+    demo_password = "demo123"
+    existing = conn.execute("SELECT id FROM users WHERE email=?", (demo_email,)).fetchone()
+    if not existing:
+        conn.execute("INSERT INTO users (email, password_hash) VALUES (?, ?)",
+                     (demo_email, hash_password(demo_password)))
+    
     conn.commit()
     conn.close()
 

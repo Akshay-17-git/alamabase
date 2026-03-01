@@ -31,7 +31,7 @@ from exporter import export_to_docx, export_to_csv
 # Initialize database
 init_db()
 
-# Configure Streamlit page
+# page config
 st.set_page_config(
     page_title="SentraShield QA Tool",
     page_icon="🛡️",
