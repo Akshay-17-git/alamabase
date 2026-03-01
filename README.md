@@ -10,7 +10,7 @@ Click **"Demo Login"** button on the login page - no credentials needed!
 
 ## 📝 Note
 
-For full source code and deployment instructions, check the GitHub repo: https://github.com/Akshay-17-git/alamabase
+For full source code and deployment instructions, check the GitHub repo: https://github.com/Akshay-17-git/alambase
 
 ## 📋 Sample Documents
 
