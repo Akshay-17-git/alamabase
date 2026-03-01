@@ -8,6 +8,10 @@ An AI-powered questionnaire answering system that uses Retrieval-Augmented Gener
 
 Click **"Demo Login"** button on the login page - no credentials needed!
 
+## 📝 Note
+
+For full source code and deployment instructions, check the GitHub repo: https://github.com/Akshay-17-git/alamabase
+
 ## 📋 Sample Documents
 
 Download sample documents from the `sample_docs/` folder in the repository:
